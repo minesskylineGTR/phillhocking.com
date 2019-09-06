@@ -6,4 +6,6 @@ output "server-ip" {
   value = module.ghost-blog.server-ip
 }
 
-
+output "debug" { 
+  value = module.ghost-blog.debug
+}
