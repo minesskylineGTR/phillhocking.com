@@ -15,9 +15,9 @@ resource "aws_cloudfront_distribution" "ghost-blog" {
   is_ipv6_enabled     = true
   default_root_object = "/"
 
-  lifecycle {
-    prevent_destroy = true
-  }
+#  lifecycle {
+#    prevent_destroy = true
+#  }
 
   aliases = [var.domain_name, "www.${var.domain_name}"]
 
