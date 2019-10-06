@@ -1,18 +1,16 @@
 server {
-    listen 80 default_server;
-    listen [::]:80 default_server ipv6only=on;
+    listen 0.0.0.0:80;
     server_name _;
-    root /usr/share/nginx/html;
-    index index.html index.htm;
-    client_max_body_size 1G;
+    access_log /var/log/nginx/access.log;
 
- location / {
-    proxy_pass http://localhost:2368;
-    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    proxy_set_header Host $http_host;
-    proxy_set_header X-Forwarded-Proto https;
-    proxy_buffering off;
- }
+    location / {
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header HOST $http_host;
+        proxy_set_header X-NginX-Proxy true;
+        proxy_pass http://localhost:2368;
+        proxy_redirect off;
+    }
+
     location = /health {
       return 200;
       #access_log off;
