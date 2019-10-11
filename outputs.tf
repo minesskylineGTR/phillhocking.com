@@ -7,5 +7,5 @@ output "server-ip" {
 }
 
 output "debug" { 
-  value = module.ghost-blog.debug
+  value = module.ghost-blog.nginx-site-config
 }
