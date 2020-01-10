@@ -18,3 +18,7 @@ variable "security_groups" {
   type = list(string)
 }
 
+variable "db_name_final_snapshot" {
+  type = string
+  default = "final_snapshot"
+}

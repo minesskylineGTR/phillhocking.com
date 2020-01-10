@@ -11,7 +11,7 @@ resource "aws_db_instance" "ghost" {
   backup_retention_period = 14
 
   vpc_security_group_ids    = var.security_groups
-  final_snapshot_identifier = "${var.db_name}-final-snapshot"
+  final_snapshot_identifier = var.db_name_final_snapshot
 
 #lifecycle {
 #    prevent_destroy = true
